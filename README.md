@@ -1,47 +1,49 @@
-# dagster_project
+# LiDAR-Based Human Action Recognition Pipeline
 
-This is a [Dagster](https://dagster.io/) project scaffolded with [`dagster project scaffold`](https://docs.dagster.io/guides/build/projects/creating-a-new-project).
+<p align="center">
+  <img src="image.png" alt="LiDAR point cloud example" width="700">
+</p>
 
-## Getting started
+This repository contains a **research & development pipeline** developed by **Yvan Ndong Ekouaga** as part of the course _IFT697 – Projet d’intégration et de recherche_ at the **University of Sherbrooke**.
 
-First, install your Dagster code location as a Python package. By using the --editable flag, pip will install your Python package in ["editable mode"](https://pip.pypa.io/en/latest/topics/local-project-installs/#editable-installs) so that as you develop, local code changes will automatically apply.
+The objective of the project is to study whether **human activities can be monitored using LiDAR sensors**, as an alternative to camera-based systems, mainly for **privacy reasons** (e.g. monitoring in sensitive environments such as bathrooms).
 
-```bash
-pip install -e ".[dev]"
-```
+## Project Overview
 
-Then, start the Dagster UI web server:
+The core hypothesis of this work is that a **human activity can be modeled as a sequence of poses**. The use case explored in this project is a **sit-to-stand movement using a walker**, where an incorrect motion could worsen injuries or health conditions.
 
-```bash
-dagster dev
-```
+The pipeline operates on **LiDAR point cloud sequences** and follows these main steps:
 
-Open http://localhost:3000 with your browser to see the project.
+1. **Scene semantic segmentation** to detect objects of interest (humans, chairs)
+2. **Point cloud filtering** to remove background elements
+3. **Pose classification** based on the spatial relationship between the human and the chaiur
+4. **Temporal analysis** of the pose sequence to recognize the activity
 
-You can start writing assets in `dagster_project/assets.py`. The assets are automatically loaded into the Dagster code location as you define them.
+A more detailed explanation of the methodology, in French, is available in the accompanying [PDF](./report.pdf)
 
-## Development
+## Models
 
-### Adding new Python dependencies
+This project relies on **PointNet++** for two main tasks:
 
-You can specify new Python dependencies in `setup.py`.
+- **Scene semantic segmentation**  
+  Used to identify objects such as _humans_ and _chairs_ in LiDAR point clouds.
+- **Pose classification**  
+  Used to classify the human pose relative to the chair once the scene has been segmented and filtered.
 
-### Unit testing
+## Pipeline characteristics
 
-Tests are in the `dagster_project_tests` directory and you can run tests using `pytest`:
+- Containerized using **Docker**
+- Designed for **offline inference** on pre-recorded point cloud sequences  
+   (real-time inference is not implemented)
 
-```bash
-pytest dagster_project_tests
-```
+This project was developed as an academic prototype and contains known limitations.
 
-### Schedules and sensors
+## Datasets
 
-If you want to enable Dagster [Schedules](https://docs.dagster.io/guides/automate/schedules/) or [Sensors](https://docs.dagster.io/guides/automate/sensors/) for your jobs, the [Dagster Daemon](https://docs.dagster.io/guides/deploy/execution/dagster-daemon) process must be running. This is done automatically when you run `dagster dev`.
+Datasets, trained models, logs, and checkpoints are NOT included in this repository. The code assumes that datasets are prepared externally and placed in the expected directories (as described in the PDF).
 
-Once your Dagster Daemon is running, you can start turning on schedules and sensors for your jobs.
+## Status
 
-## Deploy on Dagster+
-
-The easiest way to deploy your Dagster project is to use Dagster+.
-
-Check out the [Dagster+ documentation](https://docs.dagster.io/dagster-plus/) to learn more.
+- Research / academic prototype
+- Not production-ready
+- Intended for experimentation and learning purposes
