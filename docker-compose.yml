@@ -1,0 +1,59 @@
+services:
+  point-cloud-init:
+    build:
+      context: ./docker/point_cloud_initialization
+    image: point-cloud-init
+    volumes:
+      - ./data/raw_scenes:/input
+      - ./data/instanced_scenes:/output
+    restart: "no"
+  scene-semantic-segmentation-preprocessing:
+    build:
+      context: ./docker/scene_semantic_segmentation_preprocessing
+    image: scene_semantic_segmentation_preprocessing
+    volumes:
+      - ./data/instanced_scenes:/input
+      - ./data:/output
+    restart: "no"
+  scene-semantic-segmentation:
+    build:
+      context: ./docker/scene_semantic_segmentation
+    image: scene_semantic_segmentation
+    volumes:
+      - ./data/scannet_test.pickle:/app/pointnet/dataset/scannet_data/scannet_test.pickle
+      - ./data/full_scenes_predictions:/app/pointnet/visu/scannet_test/full_scenes_predictions
+    restart: "no"
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+              - capabilities: [gpu]
+  scene-interest-points-extraction:
+    build:
+      context: ./docker/scene_interest_points_extraction
+    image: scene_interest_points_extraction
+    volumes:
+      - ./data/full_scenes_predictions:/app/input
+      - ./data:/app/output
+    restart: "no"
+  pose-classification:
+    build:
+      context: ./docker/pose_classification
+    image: pose_classification
+    volumes:
+      - ./data:/app/external_data
+    restart: "no"
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+  action-recognition:
+    build:
+      context: ./docker/action_recognition
+    image: action_recognition
+    volumes:
+      - ./data:/app/data
+    restart: "no"

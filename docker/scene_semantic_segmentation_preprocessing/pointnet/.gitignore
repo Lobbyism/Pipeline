@@ -1,0 +1,10 @@
+data/
+scannet/depthnet
+scannet/depthnet_scenes
+scannet/log
+venv/
+venv3/
+*.tmp
+*.log
+scannet/npy_scenes
+scannet/preprocessed_scenes

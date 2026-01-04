@@ -1,0 +1,10 @@
+[project]
+name = "point-cloud-initialization"
+version = "0.1.0"
+dependencies = [
+    "dagster",
+    "numpy"
+]
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

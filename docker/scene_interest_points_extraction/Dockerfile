@@ -1,0 +1,4 @@
+FROM python:2.7-slim
+WORKDIR /app
+COPY main.py ./
+CMD ["python2.7", "main.py"]

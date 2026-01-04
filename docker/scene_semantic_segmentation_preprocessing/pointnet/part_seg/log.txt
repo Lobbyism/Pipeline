@@ -1,0 +1,4 @@
+  File "C:\Users\ordic\pointnet2\part_seg\train.py", line 106
+    print "--- Get model and loss"
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(...)?

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual envs
+venv/
+.venv/
+
+# ML / training artifacts
+**/log/
+**/logs/
+**/checkpoints/
+**/*.pth
+**/*.pickle
+**/*.pkl
+**/events.out.tfevents.*
+
+# Compiled binaries
+*.so
+*.dll
+*.exe
+
+# IDE
+.idea/
+.vscode/

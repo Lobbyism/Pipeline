@@ -1,0 +1,19 @@
+{
+    "gpu": "0",
+    "logdir": "logs/semantic",
+    "dataset": "semantic",
+    "model": "model",
+    "max_epoch": 200,
+
+    "num_point": 8192,
+    "batch_size": 32,
+    "input_dropout": 0.0,
+    "use_color": 1,
+    "use_z_feature": 0,
+    "accept_rate": 0.1,
+
+    "l1_radius": 0.5,
+    "l2_radius": 1.0,
+    "l3_radius": 2.0,
+    "l4_radius": 4.0
+}

@@ -1,0 +1,7 @@
+category	count	nyuId	nyu40id	eigen13id	nyuClass	nyu40class	eigen13class	ModelNet40	ModelNet10	ShapeNetCore55	synsetoffset	wnsynsetid	wnsynsetkey
+wall	7274	21	1	12	wall	wall	Wall					n04546855	wall.n.01
+human	5419	5	5	4	human	human	Human	human	human	human	3001627	n03001627	human.n.01
+ceiling	3910	11	2	5	ceiling	ceiling	Ceiling					n03365592	ceiling.n.01
+monitor	395	49	40	7	monitor	monitor	Objects	monitor	monitor	tv or monitor	3211117	n03782190	monitor.n.04
+non_human					non_human	non_human		non_human	non_human				
+chair					chair	chair		chair	chair				

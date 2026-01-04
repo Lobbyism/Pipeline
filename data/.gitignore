@@ -1,0 +1,6 @@
+full_scenes_predictions
+instanced_scenes
+pose_points
+pose_predictions
+raw_scenes
+scannet_test.pickle
